@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TDDGroupByThenSum", "TDDGroupByThenSum\TDDGroupByThenSum.csproj", "{17D188D1-6B25-4C3F-819A-374B7B04D0D4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TDDPartitionThenSum", "TDDPartitionThenSum\TDDPartitionThenSum.csproj", "{17D188D1-6B25-4C3F-819A-374B7B04D0D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TDDGroupByThenSumTest", "TDDGroupByThenSumTest\TDDGroupByThenSumTest.csproj", "{51E34A34-38E7-4D9F-B853-19CBEF84A726}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TDDPartitionThenSumTest", "TDDPartitionThenSumTest\TDDPartitionThenSumTest.csproj", "{51E34A34-38E7-4D9F-B853-19CBEF84A726}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

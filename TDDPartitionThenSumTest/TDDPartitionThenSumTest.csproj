@@ -6,8 +6,8 @@
     <ProjectGuid>{51E34A34-38E7-4D9F-B853-19CBEF84A726}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TDDGroupByThenSumTest</RootNamespace>
-    <AssemblyName>TDDGroupByThenSumTest</AssemblyName>
+    <RootNamespace>TDDPartitionThenSumTest</RootNamespace>
+    <AssemblyName>TDDPartitionThenSumTest</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -50,7 +50,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="TDDPartitionThenSumTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Choose>

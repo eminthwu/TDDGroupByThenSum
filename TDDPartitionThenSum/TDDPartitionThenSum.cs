@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TDDGroupByThenSum
+namespace TDDPartitionThenSum
 {
-    public class Class1
+    public class TDDPartitionThenSum
     {
     }
 }
