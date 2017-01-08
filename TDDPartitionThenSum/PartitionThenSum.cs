@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TDDPartitionThenSum
 {
-    public class TDDPartitionThenSum
+    public class PartitionThenSum
     {
     }
 }
