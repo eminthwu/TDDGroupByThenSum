@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NSubstitute;
 
 namespace TDDGroupByThenSumTest
 {
@@ -9,7 +10,11 @@ namespace TDDGroupByThenSumTest
         [TestMethod]
         public void TestMethod1()
         {
+            //Arrange
 
+            //Act
+
+            //Assert
         }
     }
 }
