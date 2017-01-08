@@ -1,8 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NSubstitute;
 using TDDPartitionThenSum;
 using System.Collections.Generic;
+
 
 namespace TDDGroupByThenSumTest
 {
@@ -14,17 +14,14 @@ namespace TDDGroupByThenSumTest
         {
             //Arrange
             var target = new PartitionThenSum();
-            var parm = new Parameter()
-            {
-                Rows = 3,
-                ParticularColumn = Columns.Cost
-            };
-
-            var expected = new List<int>() { 6, 151, 24, 21 };
+            var rows = 3;
+            var expected = new List<int>() { 6, 15, 24, 21 };
 
             //Act
-            List<int> result = target.GetSumResult(parm);
-            //Assert
+            List<int> result = target.GetSumResult<ColumnCost>(rows);
+
+            //Assert            
+            CollectionAssert.AreEqual(expected, result);
         }
     }
 }

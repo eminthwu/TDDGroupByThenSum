@@ -6,15 +6,10 @@ using System.Threading.Tasks;
 
 namespace TDDPartitionThenSum
 {
-   public class Parameter
+    public class Parameter
     {
-        public Columns ParticularColumn { get; set; }
+        public ColumnBase ParticularColumn { get; set; }
 
         public int Rows { get; set; }
-    }
-
-    public enum Columns
-    {
-        ID,Cost,Revenue,SellPrice
-    }
+    }    
 }
