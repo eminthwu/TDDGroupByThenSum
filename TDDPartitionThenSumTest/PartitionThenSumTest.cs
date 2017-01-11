@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TDDPartitionThenSum;
 using System.Collections.Generic;
+using System.Linq;
 
 
 namespace TDDGroupByThenSumTest
@@ -32,7 +33,7 @@ namespace TDDGroupByThenSumTest
 
 
         [TestMethod]
-        public void 驗證GetSumResult_Cost欄位_3個一組()
+        public void 驗證GetSumResultReflection_Cost欄位_3個一組()
         {
             //var target = new PartitionThenSum(Sources);
             var rows = 3;
@@ -47,7 +48,7 @@ namespace TDDGroupByThenSumTest
         }
 
         [TestMethod]
-        public void 驗證GetSumResult_Revenue欄位_4個一組()
+        public void 驗證GetSumResultReflection_Revenue欄位_4個一組()
         {
             //var target = new PartitionThenSum(Sources);
             var rows = 4;
@@ -56,6 +57,38 @@ namespace TDDGroupByThenSumTest
 
             //Act
             List<int> result = PartitionThenSum.GetSumResultReflection<Stock>(_Sources, rows, property);
+
+            //Assert            
+            CollectionAssert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void 驗證GetSumResultReGeneric_Cost欄位_3個一組()
+        {
+            //var target = new PartitionThenSum(Sources);
+            var rows = 3;           
+            var expected = new List<int>() { 6, 15, 24, 21 };
+
+            Func<IEnumerable<Stock>, List<int>> func = (IEnumerable<Stock> sources) => sources.Select(s => s.Cost).ToList();
+
+            //Act
+            List<int> result = PartitionThenSum.GetSumResultGeneric<Stock>(_Sources, func, rows);
+
+            //Assert            
+            CollectionAssert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void 驗證GetSumResultReGeneric_Revenue欄位_4個一組()
+        {
+            //var target = new PartitionThenSum(Sources);
+            var rows = 4;
+            var expected = new List<int>() { 50, 66, 60 };
+
+            Func<IEnumerable<Stock>, List<int>> func = (IEnumerable<Stock> sources) => sources.Select(s => s.Revenue).ToList();
+
+            //Act
+            List<int> result = PartitionThenSum.GetSumResultGeneric<Stock>(_Sources, func, rows);
 
             //Assert            
             CollectionAssert.AreEqual(expected, result);

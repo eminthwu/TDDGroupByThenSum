@@ -52,6 +52,26 @@ namespace TDDPartitionThenSum
         }
     }
 
+    public partial class PartitionThenSum
+    {
+        /*
+            練習使用Func，但依舊不能傳入匿名型別             
+        */
+        public static List<int> GetSumResultGeneric<T>(IEnumerable<T> sources, Func<IEnumerable<T>, List<int>> executor, int rows)
+        {
+            var index = 0;
+            var result = new List<int>();
+
+            while (index < sources.Count())
+            {
+                result.Add(executor(sources).Skip(index).Take(rows).Sum(s => s));
+                index += rows;
+            }
+
+            return result;
+        }
+    }
+
     public static class Extension
     {
         //public static 
