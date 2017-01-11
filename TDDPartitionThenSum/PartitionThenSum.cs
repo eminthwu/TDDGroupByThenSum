@@ -8,6 +8,8 @@ namespace TDDPartitionThenSum
 {
     public partial class PartitionThenSum
     {
+        /*映射取得property*/
+
         public static List<int> GetSumResultReflection<T>(List<T> sources, int rows, string propertyName)
         {
             var partition = GetPartition<T>(sources, rows);
@@ -54,9 +56,7 @@ namespace TDDPartitionThenSum
 
     public partial class PartitionThenSum
     {
-        /*
-            練習使用Func，但依舊不能傳入匿名型別             
-        */
+        /*練習使用Func，但依舊不能傳入匿名型別*/
         public static List<int> GetSumResultGeneric<T>(IEnumerable<T> sources, Func<IEnumerable<T>, List<int>> executor, int rows)
         {
             var index = 0;
@@ -74,6 +74,7 @@ namespace TDDPartitionThenSum
 
     public static class Extension
     {
+        /*使用extension method*/
         public static List<int> GetSumResultExtensionGeneric<T>(this IEnumerable<T> instance, Func<T,int> executor, int rows)
         {
             var index = 0;

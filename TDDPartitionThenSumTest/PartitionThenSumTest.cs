@@ -35,7 +35,7 @@ namespace TDDGroupByThenSumTest
         [TestMethod]
         public void 驗證GetSumResultReflection_Cost欄位_3個一組()
         {
-            //var target = new PartitionThenSum(Sources);
+            //Arrange 
             var rows = 3;
             var property = "Cost";
             var expected = new List<int>() { 6, 15, 24, 21 };
@@ -50,7 +50,7 @@ namespace TDDGroupByThenSumTest
         [TestMethod]
         public void 驗證GetSumResultReflection_Revenue欄位_4個一組()
         {
-            //var target = new PartitionThenSum(Sources);
+            //Arrange 
             var rows = 4;
             var property = "Revenue";
             var expected = new List<int>() { 50, 66, 60 };
@@ -65,7 +65,7 @@ namespace TDDGroupByThenSumTest
         [TestMethod]
         public void 驗證GetSumResultGeneric_Cost欄位_3個一組()
         {
-            //var target = new PartitionThenSum(Sources);
+            //Arrange 
             var rows = 3;
             var expected = new List<int>() { 6, 15, 24, 21 };
 
@@ -81,7 +81,7 @@ namespace TDDGroupByThenSumTest
         [TestMethod]
         public void 驗證GetSumResultExtensionGeneric_Revenue欄位_4個一組()
         {
-            //var target = new PartitionThenSum(Sources);
+            //Arrange 
             var rows = 4;
             var expected = new List<int>() { 50, 66, 60 };
             Func<IEnumerable<Stock>, List<int>> func = (IEnumerable<Stock> sources) => sources.Select(s => s.Revenue).ToList();
@@ -96,7 +96,7 @@ namespace TDDGroupByThenSumTest
         [TestMethod]
         public void 驗證GetSumResultExtensionGeneric_Cost欄位_3個一組()
         {
-            //var target = new PartitionThenSum(Sources);
+            //Arrange 
             var rows = 3;
             var expected = new List<int>() { 6, 15, 24, 21 };
             var anonymous = _Sources.Select(s => new { Id = s.Id, Cost = s.Cost, Revenue = s.Revenue, SellPrice = s.SellPrice }).ToList();
@@ -112,7 +112,7 @@ namespace TDDGroupByThenSumTest
         [TestMethod]
         public void 驗證GetSumResultReGeneric_Revenue欄位_4個一組()
         {
-            //var target = new PartitionThenSum(Sources);
+            //Arrange 
             var rows = 4;
             var expected = new List<int>() { 50, 66, 60 };
 
