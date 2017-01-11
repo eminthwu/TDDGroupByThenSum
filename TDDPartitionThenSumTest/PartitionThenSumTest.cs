@@ -56,23 +56,54 @@ namespace TDDGroupByThenSumTest
             var expected = new List<int>() { 50, 66, 60 };
 
             //Act
-            List<int> result = PartitionThenSum.GetSumResultReflection<Stock>(_Sources, rows, property);
+            List<int> result = PartitionThenSum.GetSumResultReflection(_Sources, rows, property);
 
             //Assert            
             CollectionAssert.AreEqual(expected, result);
         }
 
         [TestMethod]
-        public void 驗證GetSumResultReGeneric_Cost欄位_3個一組()
+        public void 驗證GetSumResultGeneric_Cost欄位_3個一組()
         {
             //var target = new PartitionThenSum(Sources);
-            var rows = 3;           
+            var rows = 3;
             var expected = new List<int>() { 6, 15, 24, 21 };
 
             Func<IEnumerable<Stock>, List<int>> func = (IEnumerable<Stock> sources) => sources.Select(s => s.Cost).ToList();
 
             //Act
-            List<int> result = PartitionThenSum.GetSumResultGeneric<Stock>(_Sources, func, rows);
+            List<int> result = PartitionThenSum.GetSumResultGeneric(_Sources, func, rows);
+
+            //Assert            
+            CollectionAssert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void 驗證GetSumResultExtensionGeneric_Revenue欄位_4個一組()
+        {
+            //var target = new PartitionThenSum(Sources);
+            var rows = 4;
+            var expected = new List<int>() { 50, 66, 60 };
+            Func<IEnumerable<Stock>, List<int>> func = (IEnumerable<Stock> sources) => sources.Select(s => s.Revenue).ToList();
+
+            //Act
+            List<int> result = PartitionThenSum.GetSumResultGeneric(_Sources, func, rows);
+
+            //Assert            
+            CollectionAssert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void 驗證GetSumResultExtensionGeneric_Cost欄位_3個一組()
+        {
+            //var target = new PartitionThenSum(Sources);
+            var rows = 3;
+            var expected = new List<int>() { 6, 15, 24, 21 };
+            var anonymous = _Sources.Select(s => new { Id = s.Id, Cost = s.Cost, Revenue = s.Revenue, SellPrice = s.SellPrice }).ToList();
+
+            //Act            
+            var result = anonymous.GetSumResultExtensionGeneric(s => s.Cost, rows);
+
 
             //Assert            
             CollectionAssert.AreEqual(expected, result);
@@ -88,7 +119,7 @@ namespace TDDGroupByThenSumTest
             Func<IEnumerable<Stock>, List<int>> func = (IEnumerable<Stock> sources) => sources.Select(s => s.Revenue).ToList();
 
             //Act
-            List<int> result = PartitionThenSum.GetSumResultGeneric<Stock>(_Sources, func, rows);
+            List<int> result = PartitionThenSum.GetSumResultGeneric(_Sources, func, rows);
 
             //Assert            
             CollectionAssert.AreEqual(expected, result);

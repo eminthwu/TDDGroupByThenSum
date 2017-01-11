@@ -74,6 +74,33 @@ namespace TDDPartitionThenSum
 
     public static class Extension
     {
-        //public static 
+        public static List<int> GetSumResultExtensionGeneric<T>(this IEnumerable<T> instance, Func<T,int> executor, int rows)
+        {
+            var index = 0;
+            var result = new List<int>();
+
+            while (index <= instance.Count())
+            {
+                result.Add(instance.Skip(index).Take(rows).Sum(executor));
+                index += rows;
+            }
+
+            return result;
+        }
+
+
+        /*91的Sample*/
+        public static IEnumerable<int> GetSumResultExtensionGeneric1<T>(this IEnumerable<T> instance, Func<T, int> executor, int rows)
+        {
+            var index = 0;
+            var result = new List<int>();
+
+            while (index <= instance.Count())
+            {
+                yield return instance.Skip(index).Take(rows).Sum(executor);
+                index += rows;
+            }
+            
+        }
     }
 }
