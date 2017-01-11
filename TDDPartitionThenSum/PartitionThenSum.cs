@@ -6,33 +6,25 @@ using System.Threading.Tasks;
 
 namespace TDDPartitionThenSum
 {
-    public class PartitionThenSum
+    public partial class PartitionThenSum
     {
-        public PartitionThenSum(List<Stock> sources)
+        public static List<int> GetSumResultReflection<T>(List<T> sources, int rows, string propertyName)
         {
-            this.Sources = sources;
+            var partition = GetPartition<T>(sources, rows);
+            var result = GetSum<T>(partition, propertyName);
+
+            return result;
         }
 
-        public List<Stock> Sources { get; set; }
-      
-
-        public List<int> GetSumResult<T>(int rows) where T : ColumnBase
-        {
-            List<List<Stock>> partitionResult = this.GetPartition(Sources, rows);
-            List<int> sumResult = this.GetSum<T>(partitionResult);
-
-            return sumResult;
-        }
-
-        private List<int> GetSum<T>(List<List<Stock>> partitionResult) where T : ColumnBase
+        private static List<int> GetSum<T>(List<List<T>> partitionResult, string propertyName)
         {
             var output = new List<int>();
             foreach (var stocks in partitionResult)
             {
                 var f = stocks.Select(stock => (stock.GetType().GetProperties()
-                                                     .Where(property => typeof(T).IsAssignableFrom(property.PropertyType))
-                                                     .First().GetValue(stock) as T).Value
-                                      ).Sum(s => s);               
+                                                     .Where(property => property.Name == propertyName && property.PropertyType == typeof(int))
+                                                     .First().GetValue(stock))
+                                      ).Sum(s => (int)s);
 
                 output.Add(f);
             }
@@ -40,16 +32,16 @@ namespace TDDPartitionThenSum
             return output;
         }
 
-        private List<List<Stock>> GetPartition(List<Stock> sources, int rows)
+        private static List<List<T>> GetPartition<T>(List<T> sources, int rows)
         {
-            var output = new List<List<Stock>>();
-            List<Stock> partition = null;
+            var output = new List<List<T>>();
+            List<T> partition = null;
 
             for (int i = 0; i < sources.Count; i++)
             {
                 if (i % rows == 0)
                 {
-                    partition = new List<Stock>();
+                    partition = new List<T>();
                     output.Add(partition);
                 }
 
@@ -58,5 +50,10 @@ namespace TDDPartitionThenSum
 
             return output;
         }
+    }
+
+    public static class Extension
+    {
+        //public static 
     }
 }

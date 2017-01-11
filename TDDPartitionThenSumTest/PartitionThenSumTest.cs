@@ -9,23 +9,23 @@ namespace TDDGroupByThenSumTest
     [TestClass]
     public class TDDPartitionThenSumTest
     {
-        private static List<Stock> Sources
+        private static List<Stock> _Sources
         {
             get
             {
                 return new List<TDDPartitionThenSum.Stock>()
                 {
-                     new Stock() { Id = 1, Cost = new ColumnCost(1),  Revenue = new ColumnRevenue(11),  SellPrice = new ColumnSellPrice(21)},
-                    new Stock() { Id = 2,  Cost = new ColumnCost(2), Revenue = new ColumnRevenue(12),  SellPrice = new ColumnSellPrice(22)},
-                    new Stock() { Id = 3,  Cost = new ColumnCost(3), Revenue = new ColumnRevenue(13),  SellPrice = new ColumnSellPrice(23)},
-                    new Stock() { Id = 4,  Cost = new ColumnCost(4), Revenue = new ColumnRevenue(14),  SellPrice =new ColumnSellPrice(24)},
-                    new Stock() { Id = 5,  Cost = new ColumnCost(5), Revenue = new ColumnRevenue(15),  SellPrice = new ColumnSellPrice(25)},
-                    new Stock() { Id = 6,  Cost = new ColumnCost(6), Revenue = new ColumnRevenue(16),  SellPrice = new ColumnSellPrice(26)},
-                    new Stock() { Id = 7,  Cost = new ColumnCost(7), Revenue = new ColumnRevenue(17),  SellPrice = new ColumnSellPrice(27)},
-                    new Stock() { Id = 8,  Cost = new ColumnCost(8), Revenue = new ColumnRevenue(18),  SellPrice = new ColumnSellPrice(28)},
-                    new Stock() { Id = 9,  Cost = new ColumnCost(9), Revenue =new ColumnRevenue(19),  SellPrice = new ColumnSellPrice(29)},
-                    new Stock() { Id = 10,  Cost = new ColumnCost(10), Revenue = new ColumnRevenue(20),  SellPrice = new ColumnSellPrice(30)},
-                    new Stock() { Id = 11,  Cost = new ColumnCost(11), Revenue = new ColumnRevenue(21),  SellPrice = new ColumnSellPrice(31)},
+                    new Stock() { Id = 1, Cost =1,  Revenue = 11,  SellPrice = 21},
+                    new Stock() { Id = 2,  Cost = 2, Revenue = 12,  SellPrice = 22},
+                    new Stock() { Id = 3,  Cost = 3, Revenue = 13,  SellPrice = 23},
+                    new Stock() { Id = 4,  Cost = 4, Revenue = 14,  SellPrice =24},
+                    new Stock() { Id = 5,  Cost = 5, Revenue = 15,  SellPrice = 25},
+                    new Stock() { Id = 6,  Cost = 6, Revenue = 16,  SellPrice = 26},
+                    new Stock() { Id = 7,  Cost = 7, Revenue = 17,  SellPrice = 27},
+                    new Stock() { Id = 8,  Cost = 8, Revenue = 18,  SellPrice = 28},
+                    new Stock() { Id = 9,  Cost = 9, Revenue = 19,  SellPrice = 29},
+                    new Stock() { Id = 10,  Cost = 10, Revenue = 20,  SellPrice = 30},
+                    new Stock() { Id = 11,  Cost = 11, Revenue = 21,  SellPrice = 31},
                 };
             }
         }
@@ -34,13 +34,13 @@ namespace TDDGroupByThenSumTest
         [TestMethod]
         public void 驗證GetSumResult_Cost欄位_3個一組()
         {
-            //Arrange
-            var target = new PartitionThenSum(Sources);
+            //var target = new PartitionThenSum(Sources);
             var rows = 3;
+            var property = "Cost";
             var expected = new List<int>() { 6, 15, 24, 21 };
 
             //Act
-            List<int> result = target.GetSumResult<ColumnCost>(rows);
+            List<int> result = PartitionThenSum.GetSumResultReflection<Stock>(_Sources, rows, property);
 
             //Assert            
             CollectionAssert.AreEqual(expected, result);
@@ -49,13 +49,13 @@ namespace TDDGroupByThenSumTest
         [TestMethod]
         public void 驗證GetSumResult_Revenue欄位_4個一組()
         {
-            //Arrange
-            var target = new PartitionThenSum(Sources);
+            //var target = new PartitionThenSum(Sources);
             var rows = 4;
+            var property = "Revenue";
             var expected = new List<int>() { 50, 66, 60 };
 
             //Act
-            List<int> result = target.GetSumResult<ColumnRevenue>(rows);
+            List<int> result = PartitionThenSum.GetSumResultReflection<Stock>(_Sources, rows, property);
 
             //Assert            
             CollectionAssert.AreEqual(expected, result);

@@ -10,11 +10,11 @@ namespace TDDPartitionThenSum
     {
         public int Id { get; set; }
 
-        public ColumnCost Cost { get; set; }
+        public int Cost { get; set; }
 
-        public ColumnRevenue Revenue { get; set; }
+        public int Revenue { get; set; }
 
-        public ColumnSellPrice SellPrice { get; set; }
+        public int SellPrice { get; set; }
     }
 
     public abstract class ColumnBase
