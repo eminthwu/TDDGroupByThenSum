@@ -9,20 +9,26 @@ namespace TDDGroupByThenSumTest
     [TestClass]
     public class TDDPartitionThenSumTest
     {
-        public static List<Stock> Sources = new List<Stock>()
+        private static List<Stock> Sources
         {
-            new Stock() { Id = 1, Cost = new ColumnCost(1),  Revenue = new ColumnRevenue(11),  SellPrice = new ColumnSellPrice(21)},
-            new Stock() { Id = 2,  Cost = new ColumnCost(2), Revenue = new ColumnRevenue(12),  SellPrice = new ColumnSellPrice(22)},
-            new Stock() { Id = 3,  Cost = new ColumnCost(3), Revenue = new ColumnRevenue(13),  SellPrice = new ColumnSellPrice(23)},
-            new Stock() { Id = 4,  Cost = new ColumnCost(4), Revenue = new ColumnRevenue(14),  SellPrice =new ColumnSellPrice(24)},
-            new Stock() { Id = 5,  Cost = new ColumnCost(5), Revenue = new ColumnRevenue(15),  SellPrice = new ColumnSellPrice(25)},
-            new Stock() { Id = 6,  Cost = new ColumnCost(6), Revenue = new ColumnRevenue(16),  SellPrice = new ColumnSellPrice(26)},
-            new Stock() { Id = 7,  Cost = new ColumnCost(7), Revenue = new ColumnRevenue(17),  SellPrice = new ColumnSellPrice(27)},
-            new Stock() { Id = 8,  Cost = new ColumnCost(8), Revenue = new ColumnRevenue(18),  SellPrice = new ColumnSellPrice(28)},
-            new Stock() { Id = 9,  Cost = new ColumnCost(9), Revenue =new ColumnRevenue(19),  SellPrice = new ColumnSellPrice(29)},
-            new Stock() { Id = 10,  Cost = new ColumnCost(10), Revenue = new ColumnRevenue(20),  SellPrice = new ColumnSellPrice(30)},
-            new Stock() { Id = 11,  Cost = new ColumnCost(11), Revenue = new ColumnRevenue(21),  SellPrice = new ColumnSellPrice(31)},
-        };
+            get
+            {
+                return new List<TDDPartitionThenSum.Stock>()
+                {
+                     new Stock() { Id = 1, Cost = new ColumnCost(1),  Revenue = new ColumnRevenue(11),  SellPrice = new ColumnSellPrice(21)},
+                    new Stock() { Id = 2,  Cost = new ColumnCost(2), Revenue = new ColumnRevenue(12),  SellPrice = new ColumnSellPrice(22)},
+                    new Stock() { Id = 3,  Cost = new ColumnCost(3), Revenue = new ColumnRevenue(13),  SellPrice = new ColumnSellPrice(23)},
+                    new Stock() { Id = 4,  Cost = new ColumnCost(4), Revenue = new ColumnRevenue(14),  SellPrice =new ColumnSellPrice(24)},
+                    new Stock() { Id = 5,  Cost = new ColumnCost(5), Revenue = new ColumnRevenue(15),  SellPrice = new ColumnSellPrice(25)},
+                    new Stock() { Id = 6,  Cost = new ColumnCost(6), Revenue = new ColumnRevenue(16),  SellPrice = new ColumnSellPrice(26)},
+                    new Stock() { Id = 7,  Cost = new ColumnCost(7), Revenue = new ColumnRevenue(17),  SellPrice = new ColumnSellPrice(27)},
+                    new Stock() { Id = 8,  Cost = new ColumnCost(8), Revenue = new ColumnRevenue(18),  SellPrice = new ColumnSellPrice(28)},
+                    new Stock() { Id = 9,  Cost = new ColumnCost(9), Revenue =new ColumnRevenue(19),  SellPrice = new ColumnSellPrice(29)},
+                    new Stock() { Id = 10,  Cost = new ColumnCost(10), Revenue = new ColumnRevenue(20),  SellPrice = new ColumnSellPrice(30)},
+                    new Stock() { Id = 11,  Cost = new ColumnCost(11), Revenue = new ColumnRevenue(21),  SellPrice = new ColumnSellPrice(31)},
+                };
+            }
+        }
 
 
         [TestMethod]
@@ -53,6 +59,6 @@ namespace TDDGroupByThenSumTest
 
             //Assert            
             CollectionAssert.AreEqual(expected, result);
-        }       
+        }
     }
 }
